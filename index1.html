@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab1</title>
+</head>
+<body>
+<div>
+    <input type="text" id="inputText">
+    <button onclick="sendData()">Отправить</button>
+</div>
+
+<script>
+    function sendData() {
+    const text = document.getElementById("inputText").value;
+    fetch("http://localhost:8080/data", {
+    mode: 'no-cors',
+    method: "POST",
+    headers: {
+    "Content-Type": "text/plain"
+    },
+    body: text
+    })
+    .then(response => console.log("Data sent successfully"))
+    .catch(error => console.error("Error sending data"));
+    }
+</script>
+</body>
+</html>
